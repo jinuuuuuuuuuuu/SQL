@@ -163,7 +163,7 @@ WHERE type = Electric;
 세 번째 행: Electric라는 조건을 걸기 위해서 양 옆에 “”표시 필요
 
 SELECT 
-name, type,
+  name, type,
 FROM pokemon
 WHERE type = “Electric”;
 ~~~
@@ -186,8 +186,8 @@ GROUP BY type;
 ~~~
 WHERE은 테이블 초반에 조건을 설정할 때 사용하기에, 해당 퀴리에서는 GROUP BY 이후 4번재 행에 HAVING으로 조건을 걸어야 한다.
 SELECT 
-type, 
-AVG(attack) AS avg_attack
+  type, 
+  AVG(attack) AS avg_attack
 FROM pokemon
 GROUP BY type
 HAVING AVG(attack) >= 60
