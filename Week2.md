@@ -131,7 +131,7 @@ HAVING
   col1_count>3
 
 # 2️⃣ 학습 인증란
-사진 첨부가 안되어 추후에 다시 해보겠습니다
+<img width="1918" height="908" alt="Image" src="https://github.com/user-attachments/assets/a0d8c51f-ca52-4acc-a281-32ba6d4524ee" />
 
 
 
