@@ -69,7 +69,7 @@ FROM basic.pokemon
 WHERE
   type2 IS NULL
 
-2.
+3.
 SELECT
   type1,
   COUNT(id) AS cnt
@@ -81,7 +81,7 @@ GROUP BY
 ORDER BY
   cnt DESC
 
-3.
+4.
 SELECT
   type1,
   COUNT(id) AS cnt
@@ -89,7 +89,7 @@ FROM basic.pokemon
 GROUP BY
   type1
 
-4. 
+5. 
 SELECT
   is_legendary,
   COUNT(id) AS cnt
@@ -97,7 +97,7 @@ FROM basic.pokemon
 GROUP BY
   is_legendary
 
-5.
+6.
 SELECT
   name,
   COUNT(name) AS trainer_cnt
@@ -105,14 +105,14 @@ FROM basic.trainer
 GROUP BY
   name
 
-6.
+7.
 SELECT
   *
 FROM basic.trainer
 WHERE
   name="IRIS"
 
-7. 
+8. 
 SELECT
   *
 FROM basic.trainer
