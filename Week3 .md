@@ -62,7 +62,64 @@
 ~~~
 
 <!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+1.
+SELECT
+  *
+FROM basic.pokemon
+WHERE
+  type2 IS NULL
 
+2.
+SELECT
+  type1,
+  COUNT(id) AS cnt
+FROM basic.pokemon
+WHERE
+  type2 IS NULL
+GROUP BY
+  type1
+ORDER BY
+  cnt DESC
+
+3.
+SELECT
+  type1,
+  COUNT(id) AS cnt
+FROM basic.pokemon
+GROUP BY
+  type1
+
+4. 
+SELECT
+  is_legendary,
+  COUNT(id) AS cnt
+FROM basic.pokemon
+GROUP BY
+  is_legendary
+
+5.
+SELECT
+  name,
+  COUNT(name) AS trainer_cnt
+FROM basic.trainer
+GROUP BY
+  name
+
+6.
+SELECT
+  *
+FROM basic.trainer
+WHERE
+  name="IRIS"
+
+7. 
+SELECT
+  *
+FROM basic.trainer
+WHERE
+  name="IRIS"
+  OR name="Cynthis"
+  OR name="Whitney"
 
 
 ## 2-8. 새로운 집계함수
@@ -74,7 +131,8 @@
 ~~~
 
 <!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
-
+GROUP BY ALL
+SELECT에서 고른 컬럼을 일일이 나열할 필요없이 GROUP BY ALL면 된다
 
 
 ## 3-2. 쿼리를 작성하는 흐름
@@ -85,7 +143,13 @@
 ~~~
 
 <!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
-
+1. 지표고민: 어떤 문제를 해결하기 위해 데이터가 필요한가?
+2. 지표 구체화: 추상적이지 않거, 구체적인 지표를 명시(분자, 분모 명시)
+3. 지표 탐색: 유사한 문제를 해결한 케이스가 있나 확인(해당 쿼리 리뷰)
+4. (없다면) 쿼리 작성: 데이터가 있는 테이블 찾기(2개 이상이면 연결 방법 고민)
+5. 데이터 정합성 확인: 예상한 결과와 동일한지 확인
+6. 쿼리 가독성: 나중을 위해 깔끔하게 쿼리 작성
+7. 쿼리 저장: 쿼리는 재사용되므로 문서로 저장
 
 
 ## 3-3. 쿼리 작성 템플릿과 생산성 도구
@@ -95,7 +159,8 @@
 * 생산성 도구를 만들 수 있다.
 ~~~
 
-<!-- 이어질 주차에서 생산성 도구를 활용한 실습이 있습니다.강의에 맞게 제작하여 화면을 캡쳐하여 이 주석을 지우고 올려주세요. -->
+<img width="810" height="400" alt="image" src="https://github.com/user-attachments/assets/52f7e46b-fffe-474a-b2bc-5b22d5d2f9cb" />
+
 
 
 
@@ -106,7 +171,7 @@
 
 # 2️⃣ 학습 인증란
 
-<!-- 이 글을 지우고, 여기에 학습한 것을 인증해주세요.-->
+<img width="382" height="860" alt="image" src="https://github.com/user-attachments/assets/4d25c4a7-59ba-446a-9eff-7caccaa69830" />
 
 
 
@@ -144,7 +209,10 @@ ORDER BY (ㄱ) (ㄹ);
 
 
 ~~~
-여기에 답을 작성해주세요!
+ㄱ: AVG(attack)
+ㄴ: WHERE
+ㄷ: GROUP BY
+ㄹ: DESC
 ~~~
 
 
