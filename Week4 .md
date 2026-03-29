@@ -64,7 +64,7 @@ Snatax Error: 문법오류
 대표적 예시
 1)
 SELECT list must not be empty at [10:1]
-- SELECT와 FROM 사 이 쿼리가 비어서
+SELECT와 FROM 사 이 쿼리가 비어서
 
 2)
 COUNT 함수 괄호 안에 여러 컬럼이 들어간 경우
