@@ -88,6 +88,7 @@ FROM basic.trainer_pokemon
 WHERE
   EXTRACT(YEAR FROM DATETIME(catch_datetime, "Asia/Seoul")) = 2023
   AND EXTRACT(MONTH FROM DATETIME(catch_datetime, "Asia/Seoul")) = 1
+```
 
 <br>
 
