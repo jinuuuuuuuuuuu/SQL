@@ -59,6 +59,25 @@
 ~~~
 
 <!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
+Extract
+- 2024-01-02 14:00:00
+- 위 시간에서 특정 월이나 일을 추출하고자 할 때
+- 요일 추출: DAYOFWEEK
+- 첫날이 일요일인 1~7까지의 값
+
+DATETIME_TRUNC
+- 2024-01-02 14:41:21
+- 함수 사용하면 2024-01-02 14:00:00
+
+PARSE_DATETIME
+- 문자열로 저장된 DATETIME을 DATETIME 타입으로 바꿀 때
+- 파싱하다
+
+FORMAT_DATETIME
+- DATETIME 타입으로 저장된 DATETIME을 문자열 데이터로 바꿀 때
+
+DATETIME_DIFF
+- 두 DATETIME의 차이를 알고 싶은 경우
 
 
 
@@ -74,7 +93,32 @@
 
 
  # 4-5. 시간 데이터 연습문제 & 4-7. 조건문 연습 문제
+조건문:
+- 특정 조건이 충족되면, 어떤 행동을 하자
+- 조건에 따라 다른 값을 표시허고 싶을 때 사용
 
+조건문 함수가 사용되는 이유
+- 데이터 분석을 하다보면, 특정 카테고리를 하나로 합치는 전처리가 필요할 수 있음
+
+1)
+CASE WHEN: 
+- 여러 조건이 있을 경우 유용
+- 순서 유의
+
+```sql
+SELECT
+*,
+  CASE
+    WHEN (type1 IN ("Rock", "Ground")) OR (type2 IN ("Rock", "Ground")) THEN "Rock&Ground"
+  ELSE type1
+  END AS new_type1
+FROM basic.pokemon
+WHERE
+ type2 IN ("Rock", "Ground")
+```
+2)
+IF- 단일 조건일 경우 유용
+- 문법: IF(조건문, TRUE일 때의 값, False일 때의 값) AS 새로운_컬럼_이름
 ~~~
 ✅ 학습 목표 :
 * 4-5, 4-7 각각에서 두 문제 이상 (최소 4문제) 푼 내용 정리하기
@@ -82,12 +126,43 @@
 
 <!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
 ```sql
+#1번 문제
 SELECT
   COUNT(DISTINCT id) AS cnt
 FROM basic.trainer_pokemon
 WHERE
   EXTRACT(YEAR FROM DATETIME(catch_datetime, "Asia/Seoul")) = 2023
   AND EXTRACT(MONTH FROM DATETIME(catch_datetime, "Asia/Seoul")) = 1
+```
+```sql
+#2번 문제
+SELECT
+  COUNT(DISTINCT id) AS battle_cnt
+FROM basic.battle
+WHERE
+  EXTRACT(HOUR FROM battle_datetime) >=6
+  AND EXTRACT(HOUR FROM battle_datetime) <= 18
+```
+```sql
+#1번 문제
+SELECT
+  id,
+  kor_name,
+  IF(speed>=70, "빠름", "느림") AS Speed_Category
+FROM basic.pokemon
+```
+```sql
+SELECT
+  id,
+  kor_name,
+  type1,
+  CASE
+    WHEN type1 = "Water" THEN "물"
+    WHEN type1 = "Fire" THEN "불"
+    WHEN type1 = "Electric" THEN "전기"
+    ELSE "기타"
+  END AS type1_Korean
+FROM basic.pokemon
 ```
 
 <br>
@@ -99,6 +174,9 @@ WHERE
 # 확인문제
 
 ## 문제 1
+
+<img width="500" height="776" alt="image" src="https://github.com/user-attachments/assets/18602aea-6ef2-48cb-92f5-244fdde9bcce" />
+
 
 > **🧚Q. 광윤이는 카페 주문 로그 데이터(order_log)를 분석하여, '오전(0시-11시)'과 '오후(12시-23시)'의 주문 건수를 집계하려고 합니다. 광윤이가 작성한 다음 SQL 쿼리 중 문법적으로 틀렸거나 의도한 결과가 나오지 않는 것을 모두 골라보세요. (복수 선택 가능)**
 
@@ -135,7 +213,9 @@ WHERE
 <!-- 틀린쿼리에 대한 오류의 원인도 같이 작성해주세요. 문제에서 제공된 order_time 컬럼은 DATETIME type의 데이터를 가지고 있다고 가정합니다. -->
 
 ~~~
-여기에 답을 작성해주세요!
+2번과, 3번
+2번: 시간 구분 코드가 아예 없는 것으로 보인다
+3번: 오전과 오후가 아닌, 시간대별로(%H) 구분될 것이다 
 ~~~
 
 
@@ -166,7 +246,8 @@ FROM pokemon;
 <!-- 근거와 함께 답을 작성해주세요 -->
 
 ~~~
-여기에 답을 작성해주세요!
+Pikachud와 Bulbasaur
+불타입은 hot, 물타입은 cool로 나올건데, 두 포켓몬은 여기에 해당을 안 한다
 ~~~
 
 
