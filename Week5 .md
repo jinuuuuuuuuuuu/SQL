@@ -81,8 +81,13 @@
 ~~~
 
 <!-- 새롭게 배운 내용을 자유롭게 정리해주세요.-->
-
-
+```sql
+SELECT
+  COUNT(DISTINCT id) AS cnt
+FROM basic.trainer_pokemon
+WHERE
+  EXTRACT(YEAR FROM DATETIME(catch_datetime, "Asia/Seoul")) = 2023
+  AND EXTRACT(MONTH FROM DATETIME(catch_datetime, "Asia/Seoul")) = 1
 
 <br>
 
